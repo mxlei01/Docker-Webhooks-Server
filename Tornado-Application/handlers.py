@@ -4,7 +4,7 @@ import docker_commands
 import logger
 import os
 import synchronous
-from executors import executor
+import executors
 
 # handlers.py contains all the handlers that tornado application uses
 
@@ -43,5 +43,7 @@ class WebHook(tornado.web.RequestHandler):
             docker_commands.runRepo % repositoryName
         ]
 
+        print "COMMANDS ARE:" + str(commands)
+
         # Execute the commands using an executor
-        executor.submit(synchronous.executeLinuxCommands, commands)
+        executors.executor.submit(synchronous.executeLinuxCommands, commands)
