@@ -15,7 +15,6 @@ def executeLinuxCommands(commands):
     # Loop through commands, and use subprocess to execute the commands and pipe the stderr to stdout
     # then record the result in a logger
     for command in commands:
-        #pipe = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-        #pipe.wait()
-        #logger.logger.info("Executed:%s" + os.linesep + "Result:%s" + os.linesep % (command, pipe.stdout.read()))
-        print command
+        pipe = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        pipe.wait()
+        logger.logger.info("Executed:%s" + os.linesep + "Result:%s" + os.linesep % (command, pipe.stdout.read()))

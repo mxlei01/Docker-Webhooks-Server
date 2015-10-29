@@ -43,7 +43,5 @@ class WebHook(tornado.web.RequestHandler):
             docker_commands.runRepo % repositoryName
         ]
 
-        print "COMMANDS ARE:" + str(commands)
-
         # Execute the commands using an executor
         executors.executor.submit(synchronous.executeLinuxCommands, commands)
