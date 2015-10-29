@@ -6,4 +6,4 @@ python:
 install:
   - pip install -r Tornado-Application/requirements.txt
 
-script: cd Tornado-Application && python -m tornado.test.runtests test
+script: cd Tornado-Application && python -m tornado.test.runtests test 
