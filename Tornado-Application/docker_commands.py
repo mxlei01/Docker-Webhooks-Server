@@ -13,4 +13,4 @@ deleteRepoImages = "sudo docker rmi $(sudo docker images | grep '%s' | awk '{pri
 pullRepo = "sudo docker pull %s"
 
 # runRepo will run the repo using a docker repo name
-runRepo = "sudo docker run --net='host' %s"
+runRepo = "sudo docker run -d --net='host' %s"

@@ -24,7 +24,7 @@ class WebHook(tornado.web.RequestHandler):
         #       None
 
         # Log the json file
-        logger.logger.info(self.request.body + os.linesep)
+        logger.logger.info(self.request.body)
 
         # Get the repository name
         repositoryName = json.loads(self.request.body)["repository"]["repo_name"]

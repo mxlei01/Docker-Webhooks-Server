@@ -17,4 +17,4 @@ def executeLinuxCommands(commands):
     for command in commands:
         pipe = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         pipe.wait()
-        logger.logger.info("Executed:%s" + os.linesep + "Result:%s" + os.linesep % (command, pipe.stdout.read()))
+        logger.logger.info("Executed:%s, Result:%s" % (command, pipe.stdout.read()))
