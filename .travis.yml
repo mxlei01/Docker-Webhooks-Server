@@ -3,6 +3,14 @@ language: python
 python:
   - "2.7"
 
+notifications:
+  webhooks:
+    urls:
+      - https://api.opsgenie.com/v1/json/travisci?apiKey=5a20d401-9c4b-4083-b22d-afeb70aad486
+    on_success: always # default: always
+    on_failure: always # default: always
+    on_start: always # default: always
+
 install:
   - pip install -r Tornado-Application/requirements.txt
 
