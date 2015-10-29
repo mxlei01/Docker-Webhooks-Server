@@ -1,5 +1,5 @@
 sudo apt-get install -y supervisor;
-mkdir -p /var/log/supervisor;
-cd && mv /Docker-Webhooks-Server/Supervisord /etc/supervisor/conf.d/supervisord.conf;
-mkdir /var/supervisord;
-/usr/bin/supervisord;
+sudo mkdir -p /var/log/supervisor;
+cd && cp /Docker-Webhooks-Server/Supervisord/supervisord.conf /etc/supervisor/conf.d/;
+sudo mkdir /var/supervisord;
+sudo /usr/bin/supervisord;
