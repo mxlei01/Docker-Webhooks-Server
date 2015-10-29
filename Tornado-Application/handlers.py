@@ -2,7 +2,7 @@ import tornado.web
 import json
 import docker_commands
 import logger
-import os
+import whitelist
 import synchronous
 import executors
 
@@ -43,5 +43,7 @@ class WebHook(tornado.web.RequestHandler):
             docker_commands.runRepo % repositoryName
         ]
 
-        # Execute the commands using an executor
-        executors.executor.submit(synchronous.executeLinuxCommands, commands)
+        # Run the commands only if the repository name is inside the whitelist
+        if repositoryName.split("/")[0] in whitelist.whitelist:
+            # Execute the commands using an executor
+            executors.executor.submit(synchronous.executeLinuxCommands, commands)
