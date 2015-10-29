@@ -1,17 +1,19 @@
 language: python
 
 python:
-  - "2.7"
+- '2.7'
 
 notifications:
   webhooks:
     urls:
-      - https://api.opsgenie.com/v1/json/travisci?apiKey=5a20d401-9c4b-4083-b22d-afeb70aad486
-    on_success: always # default: always
-    on_failure: always # default: always
-    on_start: never # default: always
+    - https://api.opsgenie.com/v1/json/travisci?apiKey=5a20d401-9c4b-4083-b22d-afeb70aad486
+    on_success: always
+    on_failure: always
+    on_start: never
+  slack:
+    secure: ttX1Pt75o9UPvShOXSKWCMJ1J0HBgxeNF86v0Sz7lqfhpeK//TzQcPU29BsAF1IxuMRiI9bZXhLoFDHyv6ZMhc9EtxY5cVnXIt81SB2w6RR+MMeFNMGcUb9oAmck7SqKznAznkrE8TJUMuPGqcS75HWu1iydeY0LlpFwWIoUa00tuhJfja9fCiD6fzZ1CRRcS7GAIELtqSVBajd5PQ6lXK1Nl7Pt8Vp9TINzipblI1/ooCqJmFJ4VeTwenJikS8NhYYqQ05R+3xhN2/lEl1mBiRDn3TA6o6JlCVCl+uRdfIJKKi7L+yulmue9ejl/I+S4EUIpqp26+r8iEZnMIEvRf1EJuMP0WeNIvzNbUZncLfjLXjeSTOT3FZNPNaWFsugm9FVEq82/N9yOdrT8LHKXdbmyAw6+cItwMLCXdRsgrHfsMg74lcy6fhiT/Udnu8JXQ84hkQ+gOOYNOV9liQBHvB/2qutPIc0KpmVHQc8B+jFCXP+ZR/T+U1RqeDuJOWDqxo5Lfg4+dq8jOnWkGvSVXIOQM9q9mFCTczxJEhHqrNoazJke/BJd3gActemd83ACD6rvYz5W5ZfmVKAppk0+Iv7dv6VNuAVH0C8DT9aNkHVd4qp7KHkLQcQZhZO49P+tXIj/NahrM5zHbEOmdZLgNaYUcvk6fmd7RWgBLAgqjg=
 
 install:
-  - pip install -r Tornado-Application/requirements.txt
+- pip install -r Tornado-Application/requirements.txt
 
-script: cd Tornado-Application && python -m tornado.test.runtests test 
+script: cd Tornado-Application && python -m tornado.test.runtests test
