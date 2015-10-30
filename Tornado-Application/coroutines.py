@@ -14,11 +14,11 @@ def post_slack_coroutine(url, payload):
     # Return:
     #       None
 
-    # Create an AsyncHTTPClient for asynchrounous calls
+    # Create an AsyncHTTPClient for async calls
     http_client = AsyncHTTPClient()
 
     # Yield the fetch of http_client so that the ioloop can do other things
-    response = yield http_client.fetch(url, method="POST", body=urllib.urlencode("payload="+payload))
+    response = yield http_client.fetch(url, method="POST", body=payload, headers=None)
 
     # Return the response
     raise gen.Return(response)
