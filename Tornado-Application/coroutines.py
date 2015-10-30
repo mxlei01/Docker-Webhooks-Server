@@ -5,7 +5,7 @@ import urllib
 # coroutines.py has all the coroutines (async calls), for our handlers
 
 @gen.coroutine
-def post_coroutine(url, payload):
+def post_slack_coroutine(url, payload):
     # Usage:
     #       This coroutine will post to a URL with a payload
     # Arguments:
@@ -17,9 +17,5 @@ def post_coroutine(url, payload):
     # Create an AsyncHTTPClient for asynchrounous calls
     http_client = AsyncHTTPClient()
 
-    print "HERE2!"
-
     # Yield the fetch of http_client so that the ioloop can do other things
-    yield http_client.fetch(url, method="POST", body=urllib.urlencode(payload))
-
-    print "HERE3!"
+    yield http_client.fetch(url, method="POST", body=urllib.urlencode("payload="+payload))
