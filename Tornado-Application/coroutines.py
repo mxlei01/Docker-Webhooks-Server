@@ -17,5 +17,9 @@ def post_coroutine(url, payload):
     # Create an AsyncHTTPClient for asynchrounous calls
     http_client = AsyncHTTPClient()
 
+    print "HERE2!"
+
     # Yield the fetch of http_client so that the ioloop can do other things
     yield http_client.fetch(url, method="POST", body=urllib.urlencode(payload))
+
+    print "HERE3!"
