@@ -5,6 +5,10 @@ import logger
 import whitelist
 import synchronous
 import executors
+import slack_settings
+import coroutines
+import slack_messages
+from tornado import gen
 
 # handlers.py contains all the handlers that tornado application uses
 
@@ -12,6 +16,7 @@ import executors
 # according to url.py, this handler is mapped to /
 # which means the localhost:8888/
 class WebHook(tornado.web.RequestHandler):
+    @gen.coroutine
     def post(self):
         # Usage:
         #       Reads a POST request, which will be sent from docker webhook. Then reads the json file from the
@@ -46,4 +51,20 @@ class WebHook(tornado.web.RequestHandler):
         # Run the commands only if the repository name is inside the whitelist
         if repositoryName.split("/")[0] in whitelist.whitelist:
             # Execute the commands using an executor
-            executors.executor.submit(synchronous.executeLinuxCommands, commands)
+            future = executors.executor.submit(synchronous.executeLinuxCommands, commands, repositoryName)
+
+            # After the execution is done, it will call a callback that will send a slack message
+            future.add_done_callback(self.sendSlackMessage)
+
+    @gen.coroutine
+    def sendSlackMessage(self, futureResult):
+        # Usage:
+        #       Sends a message to slack channels defined in the slack_Settings.py
+        # Arguments:
+        #       None
+        # Return:
+        #       None
+
+        # Send messages to webhooks in slack
+        for url in slack_settings.webhook_urls:
+            coroutines.post_coroutine(url, slack_messages.docker_update % futureResult.result())
