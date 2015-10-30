@@ -67,4 +67,4 @@ class WebHook(tornado.web.RequestHandler):
 
         # Send messages to webhooks in slack
         for url in slack_settings.webhook_urls:
-            coroutines.post_coroutine(url, slack_messages.docker_update % futureResult.result())
+            coroutines.post_coroutine(url, json.loads(slack_messages.docker_update % futureResult.result()))
