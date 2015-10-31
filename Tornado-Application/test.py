@@ -30,5 +30,5 @@ class Test_APIs(AsyncTestCase):
     @tornado.testing.gen_test
     def test_runRepo(self):
         # Tests the string runRepo if string replacement succeeded
-        command = docker_commands.runRepo % ("mxlei01/repo")
+        command = docker_commands.runRepo % ("mxlei01/repo", "mxlei01/repo")
         self.assertIn("mxlei01/repo", command)
