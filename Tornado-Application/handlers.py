@@ -45,7 +45,7 @@ class WebHook(tornado.web.RequestHandler):
             docker_commands.deleteRepoContainers % repositoryName,
             docker_commands.deleteRepoImages % repositoryName,
             docker_commands.pullRepo % repositoryName,
-            docker_commands.runRepo % repositoryName
+            docker_commands.runRepo % (repositoryName.replace("/", "-"), repositoryName)
         ]
 
         # Run the commands only if the repository name is inside the whitelist
