@@ -1,7 +1,7 @@
 # Import os libraries
 import os
 
-# settings.py is responsible for setting up the tornado web applications, such as enabling cookies,
+# router_settings.py is responsible for setting up the tornado web applications, such as enabling cookies,
 # security features, and paths for our static and template files
 
 settings = {

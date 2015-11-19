@@ -1,6 +1,6 @@
 import tornado.ioloop
 import tornado.web
-from url import application
+from routers.router import application
 
 # main.py is the main access point of the tornado app, to run the application, just run "python main.py"
 

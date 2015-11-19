@@ -1,19 +1,16 @@
-import tornado.web
 import json
-import docker_commands
-import logger
-import whitelist
-import synchronous
-import executors
-import slack_settings
-import coroutines
-import slack_messages
+import tornado.web
 from tornado import gen
+from docker_settings import docker_commands, whitelist
+from executor import executors
+from linux_command import linux_command_execute
+from loggers import logger
+from slack import slack_messages, slack_settings, slack_http_client
 
-# handlers.py contains all the handlers that tornado application uses
+# docker_webhook_handler.py contains all the handlers that tornado application uses
 
 # This class is used to handle the main of the webpage
-# according to url.py, this handler is mapped to /
+# according to router.py, this handlers is mapped to /
 # which means the localhost:8888/
 class WebHook(tornado.web.RequestHandler):
     @gen.coroutine
@@ -51,7 +48,7 @@ class WebHook(tornado.web.RequestHandler):
         # Run the commands only if the repository name is inside the whitelist
         if repositoryName.split("/")[0] in whitelist.whitelist:
             # Execute the commands using an executor
-            future = executors.executor.submit(synchronous.executeLinuxCommands, commands, repositoryName)
+            future = executors.executor.submit(linux_command_execute.executeLinuxCommands, commands, repositoryName)
 
             # After the execution is done, it will call a callback that will send a slack message
             future.add_done_callback(self.sendSlackMessage)
@@ -68,5 +65,5 @@ class WebHook(tornado.web.RequestHandler):
         # Send messages to webhooks in slack using coroutines
         logger.logger.info("Sending Webhooks to Slack")
         for url in slack_settings.webhook_urls:
-            response = yield coroutines.post_slack_coroutine(url, slack_messages.docker_update % futureResult.result())
+            response = yield slack_http_client.post_slack_coroutine(url, slack_messages.docker_update % futureResult.result())
             logger.logger.info("Response from Slack:%s" % response)

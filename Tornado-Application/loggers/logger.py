@@ -23,10 +23,10 @@ def setupLogger():
     # Create a formatter so the outputs would have name, time, level, and message
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(thread)d - %(threadName)s - %(levelname)s - %(message)s')
 
-    # Set the formatter to the handler
+    # Set the formatter to the handlers
     handler.setFormatter(formatter)
 
-    # Set the handler to the logger
+    # Set the handlers to the logger
     logger.addHandler(handler)
 
     # Return the logger, so that we can use it later

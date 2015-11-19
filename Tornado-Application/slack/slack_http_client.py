@@ -1,8 +1,7 @@
 from tornado.httpclient import AsyncHTTPClient
-from tornado import gen, escape
-import urllib
+from tornado import gen
 
-# coroutines.py has all the coroutines (async calls), for our handlers
+# slack_http_client.py has all the coroutines (async calls), for our handlers
 
 @gen.coroutine
 def post_slack_coroutine(url, payload):

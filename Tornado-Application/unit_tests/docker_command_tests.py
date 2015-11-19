@@ -1,6 +1,6 @@
 import tornado
-import docker_commands
 from tornado.testing import AsyncTestCase
+from docker_settings import docker_commands
 
 class Test_APIs(AsyncTestCase):
     @tornado.testing.gen_test

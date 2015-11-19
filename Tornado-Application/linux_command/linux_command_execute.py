@@ -1,7 +1,8 @@
 import subprocess
-import logger
+from loggers import logger
 
-# synchronous.py will include all the functions that are synchronous
+
+# linux_command_execute.py will include all the functions that are synchronous
 
 def executeLinuxCommands(commands, repositoryName):
     # Usage:
