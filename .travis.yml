@@ -21,12 +21,13 @@ before_install:
   - pip install coveralls
 
 install:
-- pip install -r Tornado-Application/requirements.txt
+  - pip install -r Tornado-Application/requirements.txt
 
 after_success:
   - codecov
 
-# script: cd Tornado-Application && python -m tornado.test.runtests unit_tests.run_tests
-script: cd Tornado-Application && coverage run -m tornado.test.runtests unit_tests.run_tests
+script: 
+  - cd Tornado-Application && coverage run -m tornado.test.runtests unit_tests.run_tests
+
 after_success:
-  coveralls
+  - coveralls
