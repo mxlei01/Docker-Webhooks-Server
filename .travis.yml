@@ -26,4 +26,7 @@ install:
 after_success:
   - codecov
 
-script: cd Tornado-Application && python -m tornado.test.runtests unit_tests.run_tests
+# script: cd Tornado-Application && python -m tornado.test.runtests unit_tests.run_tests
+script: cd Tornado-Application && coverage run -m tornado.test.runtests unit_tests.run_tests
+after_success:
+  coveralls
