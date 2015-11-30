@@ -23,9 +23,6 @@ before_install:
 install:
   - pip install -r Tornado-Application/requirements.txt
 
-after_success:
-  - codecov
-
 script: 
   - cd Tornado-Application && coverage run -m tornado.test.runtests unit_tests.run_tests
 
