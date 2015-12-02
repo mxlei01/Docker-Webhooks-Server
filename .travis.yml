@@ -24,7 +24,7 @@ install:
   - pip install -r Tornado-Application/requirements.txt
 
 script: 
-  - cd Tornado-Application && coverage run --omit=/home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages/* -m tornado.test.runtests unit_tests.run_tests
+  - cd Tornado-Application && coverage run --omit=/home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages/*,unit_tests/run_tests.py -m tornado.test.runtests unit_tests.run_tests
 
 after_success:
   - coveralls
