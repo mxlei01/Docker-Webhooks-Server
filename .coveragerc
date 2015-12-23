@@ -1,8 +1,8 @@
 [run]
 omit = 
 	/usr/local/lib/*
-	./unit_tests/run_all_tests.py
-	./home/travis/virtualenv/python2.7.9/*
+	unit_tests/run_all_tests.py
+	home/travis/virtualenv/python2.7.9/*
 
 source =
 	.
