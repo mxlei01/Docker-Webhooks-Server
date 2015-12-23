@@ -3,7 +3,8 @@ omit =
 	/home/travis/virtualenv/python2.7.9/lib/python2.7/site-packages/*
 	unit_tests/run_tests.py
 
-source = .
+source = 
+	.
 
 [report]
 ignore_errors = True
