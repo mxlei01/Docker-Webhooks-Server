@@ -7,10 +7,10 @@ engines:
     enabled: true
   duplication:
     enabled: true
-  config:
-    languages:
-    - python
-    - javascript
+    config:
+      languages:
+      - python
+      - javascript
   fixme:
     enabled: true
   pep8:
