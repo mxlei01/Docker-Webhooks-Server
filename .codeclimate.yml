@@ -17,4 +17,4 @@ engines:
     enabled: true
 ratings:
   paths:
-  - .
+    - *
